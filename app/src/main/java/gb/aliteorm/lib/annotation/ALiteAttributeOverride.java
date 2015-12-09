@@ -33,7 +33,7 @@ import java.lang.annotation.Target;
 public @interface ALiteAttributeOverride {
 	/**
 	 *Returns the name of the attribute to override.
-	 * @return the name 
+	 * @return the name of the attribute
 	 */
 	String name();
 
