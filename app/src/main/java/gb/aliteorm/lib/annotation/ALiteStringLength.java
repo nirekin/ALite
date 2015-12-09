@@ -27,7 +27,7 @@ import java.lang.annotation.Target;
  * <p>
  * Can be used to annotated a method corresponding to a persistent String.
  * <br>
- * Can also be used to specify the desired length of an element collection of type "collection of String".
+ * Can also be used to specify the desired length of an element collection of type "collection of Strings".
  *
  * @author Guillaume Barré
  * @since 1.0

@@ -39,40 +39,40 @@ public @interface ALiteColumn {
     String name() default "";
 
     /**
-     * Indicates if the column must be unique or not
+     * Indicates if the column must be unique or not.
      * @return <code>true</code> is the column is unique, otherwise <code>false</code>
      */
     boolean unique() default false;
 
     /**
-     * Indicates if the column can be null or not
+     * Indicates if the column can be null or not.
      * @return <code>true</code> is the column can be null, otherwise <code>false</code>
      */
     boolean nullable() default true;
 
     /**
-     * Indicates if the column is part of the insert SQL to persist new instances
+     * Indicates if the column is part of the insert SQL to persist new instances.
 	 * @return <code>true</code> if this column is part of the insert SQL, otherwise <code>false</code>
      */
     boolean insertable() default true;
 
     /**
-	 * Indicates if the column is part of the update SQL to modify existing instances
+	 * Indicates if the column is part of the update SQL to modify existing instances.
 	 * @return <code>true</code> if this column is part of the update SQL, otherwise <code>false</code>
 	 */
     boolean updatable() default true;
 
     /**
-     * Returns the exact an complete SQL sentence to create this column into the database
+     * Returns the exact an complete SQL sentence to create this column into the database.
      * <p>
-     * The use of this parameter will bypass all the automatic construction of the column
+     * The use of this parameter will bypass all the automatic construction of the column.
      *  
      * @return the SQL to create the column
      */
     String columnDefinition() default "";
 
     /**
-     * Returns the default value of this column content
+     * Returns the default value of this column content.
      * @return the default
      */
     String defaultValue() default "";

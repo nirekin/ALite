@@ -27,13 +27,18 @@ import java.lang.annotation.Target;
  * <ul>
  *		<li>A persistent class must have a public no argument constructor</li>
  * 		<li>By default we will use the class name as name of the mapped database table</li>
- * 		<li>The entity class can contains <code>@ALiteId </code> or <code>@ALiteEmbeddedId</code></li>
+ * 		<li>The entity class can contains one <code>@ALiteId </code> or <code>@ALiteEmbeddedId</code></li>
  * 		<li>The entity class can contains <code>@ALiteElementCollection</code></li>
  * 		<li>The entity class can reference <code>@ALiteEmbeddable</code> classes</li>
  * 		<li>The entity class can inherit from a <code>@ALiteMappedSuperclass</code> class</li>
  * </ul>
  * 
- * 
+ * @see ALiteId
+ * @see ALiteEmbeddedId
+ * @see ALiteElementCollection
+ * @see ALiteEmbeddable
+ * @see ALiteMappedSuperclass
+ *
  * @author Guillaume Barré
  * @since 1.0
  *
