@@ -221,7 +221,7 @@ One of the main differences between ALiteOrm and JPA is that some annotations ca
 <a name="ALiteAttributeOverride"></a>
 ###@ALiteAttributeOverride
 
-Applicable to : **Class**, **Method**
+Applicable to : **Class** only
 
 **Parameters** of *@ALiteAttributeOverride*:
 
@@ -230,20 +230,103 @@ name:    The name of the attribute to override.
 column:  The new column name.
 ```
 
-TODO
+___
+_RESTRICTION:_
+
+* _**@ALiteAttributeOverride** can be used only at the class level for classes annotated with @ALiteEntity, using it in another place won't throw an exception but won't have any effect_.
+
+---
+
+This annotations allows to change the name of the column mapped with an attribute. This permits for example to reference within an entity an embedded class having an attribute with the same name of one of the entity itself.
+
+
+In the following example the _Embbedded_ class cannot be directly referece into _Table2_ because they both have an attribute "str" and this will throw a **RDuplicateColumnNameException** exception.
+
+To map the reference of _Embbeded_ into _Table2_ we can change the name of the column mapped for the *str* attribute into the _Embedded_ class.
+
+Using the following instruction the *str* attribute of the _Embedded_ class will be mapped to a column name *embedded_str*.
+
+
+@ALiteAttributeOverride(name="emb.str", column="embedded_str")
+
+
+```
+Example 
+
+	@ALiteEntity
+	@ALiteAttributeOverrides(value={
+		@ALiteAttributeOverride(name="emb.str", column="embedded_str")
+	}
+	public class Table2{
+		private Embbedded emb;
+		private String str;
+	
+		...
+		
+		@ALiteEmbedded
+		public Embbedded getEmb() {
+			return emb;
+		}
+	}
+	
+	@ALiteEmbeddable
+	public class Embbedded{
+		private String str;
+		
+		...
+	}
+
+	
+```
+
 
 <a name="ALiteAttributeOverrides"></a>
 ###@ALiteAttributeOverrides
 
-Applicable to : **Class**, **Method**
-
-**Parameters** of *@ALiteAttributeOverrides*:
+Applicable to : **Class** only**Parameters** of *@ALiteAttributeOverrides*:
 
 ```
 value:  The list of columns to override.
 ```
 
-TODO
+___
+_RESTRICTION:_
+
+* _**@ALiteAttributeOverrides** can be used only at the class level for classes annotated with @ALiteEntity, using it in another place won't throw an exception but won't have any effect_.
+
+---
+
+This annotations allows to specify the list of attributes to override for the annotated entity.
+ 
+```
+Example 
+
+	@ALiteEntity
+	@ALiteAttributeOverrides(value={
+		@ALiteAttributeOverride(name="emb.str1", column="embedded_string1")
+		@ALiteAttributeOverride(name="emb.str2", column="embedded_string2")
+		@ALiteAttributeOverride(name="emb.str3", column="embedded_string3")
+	}
+	public class Table2{
+		private Embbedded emb;
+		private String str1, str2, str3;
+	
+		...
+		
+		@ALiteEmbedded
+		public Embbedded getEmb() {
+			return emb;
+		}
+	}
+	
+	@ALiteEmbeddable
+	public class Embbedded{
+		private String str1, str2, str3;
+		
+		...
+	}
+```
+
 
 <a name="ALiteColumn"></a>
 ###@ALiteColumn
@@ -265,7 +348,61 @@ Specifies more details about the database column where is mapped the property co
 
 If no ***@ALiteColumn*** annotation is specified, or if it's specified without defining all its parameters, the default values will be applied.
 
-TODO example
+```
+Example 
+
+	@ALiteEntity
+	public class Table2{
+		private String str1, str2, str3, str4, str5, str7;
+		private boolean boolean6;
+		...
+		// str1 will be mapped into a column called "my_str"
+		@ALiteColumn(name="my_str")
+		public String getStr1() {
+			return str1;
+		}
+		
+		// the database column str2 will have a "unique" constraint
+		@ALiteColumn(unique=true)
+		public String getStr2() {
+			return str2;
+		}
+
+		// the database column str3 will have a "non null" constraint
+		@ALiteColumn(nullable=true)
+		public String getStr3() {
+			return str3;
+		}		
+		
+		// the database column str4 will not be filled saving the entity, if defined the 
+		// "defaultValue" will be inserted.
+		@ALiteColumn(insertable =false)
+		public String getStr4() {
+			return str4;
+		}
+		
+		// the database column str5 won't be modified by update
+		@ALiteColumn(updatable =false)
+		public String getStr5() {
+			return str5;
+		}
+		
+		// the database column will be build using the "columnDefinition" content, 
+		// all other attributes, like "name", will be ignored
+ 		@ALiteColumn(name="blablabla" columnDefinition="my_boolean INTEGER DEFAULT '1' NULL")
+		public boolean getBoolean6() {
+			return boolean6;
+		}
+
+		// if str7 has not been initialized then the database column will be inserted and
+		// update using the defined "defaultValue"
+		@ALiteColumn(defaultValue ="foo")
+		public String getStr7() {
+			return str7;
+		}
+	}
+```
+
 
 <a name="ALiteDBVersion"></a>
 ###@ALiteDBVersion
