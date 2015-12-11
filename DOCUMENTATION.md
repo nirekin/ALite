@@ -1696,11 +1696,11 @@ Removing a global entity listener
 When en event occurs on an entity ALiteOrm will invoke the callback methods in the following order.
 
 * Internal Callback Methods
-* External listeners' methods (*)
-* Session listeners' methods (*)
-* Global listeners' methods (*)
+* External listeners' methods (1)
+* Session listeners' methods (1)
+* Global listeners' methods (1)
 
-(*) In case of multiples listeners the will be invoke base on the order they were added as parameter to the @ALiteEntityListeners annotation oro to the Session or ***ALiteOrmBuilder*** using the methods addSessionEntityListener or addGlobalEntityListener
+(1) In case of multiples listeners the will be invoke base on the order they were added as parameter to the ***@ALiteEntityListeners*** annotation oro to the Session or ***ALiteOrmBuilder*** using the methods **addSessionEntityListener** or **addGlobalEntityListener**
 
 ###Exclusion of entity listeners
 
