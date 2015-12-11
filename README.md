@@ -212,14 +212,14 @@ ALiteOrm supports a limited list of based types and wrappers.
 * java.lang.BigInteger
 * java.lang.BigDecimal
 
-#ALiteORm annotations
+#ALiteOrm annotations
 
 As said previously ALiteOrm is strongly inspired by the JPA 2 annotations.
 
 One of the main differences between ALiteOrm and JPA is that some annotations can be used only at the class level or at the method level or both.
 
-###@ALiteAttributeOverride
 <a name="ALiteAttributeOverride"></a>
+###@ALiteAttributeOverride
 
 Applicable to : **Class**, **Method**
 
@@ -232,8 +232,8 @@ column:  The new column name.
 
 TODO
 
-###@ALiteAttributeOverrides
 <a name="ALiteAttributeOverrides"></a>
+###@ALiteAttributeOverrides
 
 Applicable to : **Class**, **Method**
 
@@ -245,8 +245,8 @@ value:  The list of columns to override.
 
 TODO
 
-###@ALiteColumn
 <a name="ALiteColumn"></a>
+###@ALiteColumn
 
 Applicable to : **Method** only
 
@@ -267,8 +267,8 @@ If no ***@ALiteColumn*** annotation is specified, or if it's specified without d
 
 TODO example
 
-###@ALiteDBVersion
 <a name="ALiteDBVersion"></a>
+###@ALiteDBVersion
 
 Applicable to : **Class**, **Method**
 
@@ -358,8 +358,8 @@ Add in the fourth version of your schema an embedded class to Table2 entity prev
 
 TODO example for method
 
-###@ALiteElementCollection
 <a name="ALiteElementCollection"></a>
+###@ALiteElementCollection
 
 Applicable to : **Method** only
 
@@ -383,8 +383,8 @@ Refer to the chapter <a href="#mapcollection">Map collections</a> to learn how u
 
 TODO example
 
-###@ALiteEmbeddable
 <a name="ALiteEmbeddable"></a>
+###@ALiteEmbeddable
 
 Applicable to : **Class** only
 
@@ -423,8 +423,8 @@ Refer to the chapter  <a href="#mappclasses">Map an entity</a> to learn how to m
 	}
 ```
 
-###@ALiteEmbedded
 <a name="ALiteEmbedded"></a>
+###@ALiteEmbedded
 
 Applicable to : **Method** only
 
@@ -467,8 +467,8 @@ Mapping an entity containing an embeddable attribute
 	}
 ```
 
-###@ALiteEmbeddedId
 <a name="ALiteEmbeddedId"></a>
+###@ALiteEmbeddedId
 
 Applicable to : **Method** only
 
@@ -531,8 +531,8 @@ Composite identifier
 
 ```
 
-###@ALiteEntity
 <a name="ALiteEntity"></a>
+###@ALiteEntity
 
 Applicable to : **Class** only
 
@@ -591,8 +591,8 @@ The entity will be mapped to a database table named "table_2"
 	}
 ```
 
-###@ALiteEntityListeners
 <a name="ALiteEntityListeners"></a>
+###@ALiteEntityListeners
 
 Applicable to : **Class** only
 
@@ -678,8 +678,8 @@ Adding multiple callback listener classes to an entity
 	}
 ```
 
-###@ALiteExcludeGlobalListeners
 <a name="ALiteExcludeGlobalListeners"></a>
+###@ALiteExcludeGlobalListeners
 
 Applicable to : **Class** only
 
@@ -708,8 +708,8 @@ Ignore global callback listener classes for a specified entity
 	}
 ```
 
-###@ALiteExcludeSessionListeners
 <a name="ALiteExcludeSessionListeners"></a>
+###@ALiteExcludeSessionListeners
 
 Applicable to : **Class** only
 
@@ -738,8 +738,8 @@ Ignore session callback methods for a specified entity
 	}
 ```
 
-###@ALiteId
 <a name="ALiteId"></a>
+###@ALiteId
 
 Applicable to : **Method** only
 
@@ -816,8 +816,9 @@ Non auto increment on string
 ```
 
 
-###@ALiteMappedSuperclass
 <a name="ALiteMappedSuperclass"></a>
+###@ALiteMappedSuperclass
+
 
 Applicable to : **Class** only
 
@@ -889,8 +890,9 @@ Multiple levels of inheritance are possibles, there is no limitation regarding t
 	}
 ```
 
-###@ALitePostLoad
 <a name="ALitePostLoad"></a>
+###@ALitePostLoad
+
 
 Applicable to : **Method** only
 
@@ -901,8 +903,9 @@ This annotation may be applied to methods of an entity class or a callback liste
 Refer to the chapter <a href="#usecallback">Use callback methods
 		and entity listener classes</a> to learn how to use methods of callback listeners.
 		
-###@ALitePostPersist
 <a name="ALitePostPersist"></a>
+###@ALitePostPersist
+
 
 Applicable to : **Method** only
 
@@ -913,8 +916,9 @@ This annotation may be applied to methods of an entity class or a callback liste
 Refer to the chapter <a href="#usecallback">Use callback methods
 		and entity listener classes</a> to learn how to use methods of callback listeners.
 
-###@ALitePostRemove
 <a name="ALitePostRemove"></a>
+###@ALitePostRemove
+
 
 Applicable to : **Method** only
 
@@ -925,8 +929,9 @@ This annotation may be applied to methods of an entity class or a callback liste
 Refer to the chapter <a href="#usecallback">Use callback methods
 		and entity listener classes</a> to learn how to use methods of callback listeners.
 		
-###@ALitePostUpdate
 <a name="ALitePostUpdate"></a>
+###@ALitePostUpdate
+
 
 Applicable to : **Method** only
 
@@ -937,8 +942,9 @@ This annotation may be applied to methods of an entity class or a callback liste
 Refer to the chapter <a href="#usecallback">Use callback methods
 		and entity listener classes</a> to learn how to use methods of callback listeners.
 		
-###@ALitePrePersist
 <a name="ALitePrePersist"></a>
+###@ALitePrePersist
+
 
 Applicable to : **Method** only
 
@@ -949,8 +955,9 @@ This annotation may be applied to methods of an entity class or a callback liste
 Refer to the chapter <a href="#usecallback">Use callback methods
 		and entity listener classes</a> to learn how to use methods of global callback listeners.
 		
-###@ALitePreRemove
 <a name="ALitePreRemove"></a>
+###@ALitePreRemove
+
 
 Applicable to : **Method** only
 
@@ -961,8 +968,9 @@ This annotation may be applied to methods of an entity class or a callback liste
 Refer to the chapter <a href="#usecallback">Use callback methods
 		and entity listener classes</a> to learn how to use methods of global callback listeners.
 		
-###@ALitePreUpdate
 <a name="ALitePreUpdate"></a>
+###@ALitePreUpdate
+
 
 Applicable to : **Method** only
 
@@ -973,8 +981,9 @@ This annotation may be applied to methods of an entity class or a callback liste
 Refer to the chapter <a href="#usecallback">Use callback methods
 		and entity listener classes</a> to learn how to use methods of global callback listeners.
 		
-###@ALiteStringLength
 <a name="ALiteStringLength"></a>
+###@ALiteStringLength
+
 
 Applicable to : **Method** only
 
@@ -1050,8 +1059,9 @@ Mapping a specific collection of string to VARCHAR(122) column
 	}
 ```
 
-###@ALiteTransient
 <a name="ALiteTransient"></a>
+###@ALiteTransient
+
 
 Applicable to : **Method** only
 
