@@ -132,14 +132,12 @@ The following code will turn on the log of used SQL instructions and also the lo
 
 ___
 
-
 ##Global callback listeners
 
 The ***ALiteOrmBuilder*** also allows you to define global callback listeners to apply to all entities manipulated by ALiteOrm.
 
 ```
 The following code will add a global callback listener class
-
 	ALiteOrmBuilder.getInstance().addGlobalEntityListener(ListenerGlobal.class);
 
 	public class ListenerGlobal {
@@ -239,16 +237,13 @@ _RESTRICTION:_
 
 This annotations allows to change the name of the column mapped with an attribute. This permits for example to reference within an entity an embedded class having an attribute with the same name of one of the entity itself.
 
-
 In the following example the _Embbedded_ class cannot be directly referece into _Table2_ because they both have an attribute "str" and this will throw a **RDuplicateColumnNameException** exception.
 
 To map the reference of _Embbeded_ into _Table2_ we can change the name of the column mapped for the *str* attribute into the _Embedded_ class.
 
 Using the following instruction the *str* attribute of the _Embedded_ class will be mapped to a column name *embedded_str*.
 
-
 @ALiteAttributeOverride(name="emb.str", column="embedded_str")
-
 
 ```
 Example 
@@ -272,13 +267,9 @@ Example
 	@ALiteEmbeddable
 	public class Embbedded{
 		private String str;
-		
 		...
 	}
-
-	
 ```
-
 
 <a name="ALiteAttributeOverrides"></a>
 ###@ALiteAttributeOverrides
@@ -326,7 +317,6 @@ Example
 		...
 	}
 ```
-
 
 <a name="ALiteColumn"></a>
 ###@ALiteColumn
@@ -402,7 +392,6 @@ Example
 		}
 	}
 ```
-
 
 <a name="ALiteDBVersion"></a>
 ###@ALiteDBVersion
@@ -611,7 +600,6 @@ Applicable to : **Method** only
 
 This annotation allows you to define which embeddable class is the composite identifier of your entity.
 
-
 ---
 *NOTE:*
 
@@ -665,7 +653,6 @@ Composite identifier
         }
 		...
 	}
-
 ```
 
 <a name="ALiteEntity"></a>
@@ -927,7 +914,6 @@ Auto increment on int
 		}
 		...
 	}
-
 ```
 
 ```
@@ -952,10 +938,8 @@ Non auto increment on string
 	}
 ```
 
-
 <a name="ALiteMappedSuperclass"></a>
 ###@ALiteMappedSuperclass
-
 
 Applicable to : **Class** only
 
@@ -1030,7 +1014,6 @@ Multiple levels of inheritance are possibles, there is no limitation regarding t
 <a name="ALitePostLoad"></a>
 ###@ALitePostLoad
 
-
 Applicable to : **Method** only
 
 Is used to specify a callback method called after an entity has been retrieved from the database. 
@@ -1042,7 +1025,6 @@ Refer to the chapter <a href="#usecallback">Use callback methods
 		
 <a name="ALitePostPersist"></a>
 ###@ALitePostPersist
-
 
 Applicable to : **Method** only
 
@@ -1056,7 +1038,6 @@ Refer to the chapter <a href="#usecallback">Use callback methods
 <a name="ALitePostRemove"></a>
 ###@ALitePostRemove
 
-
 Applicable to : **Method** only
 
 Is used to specify a callback method after an entity has been deleted into the database. 
@@ -1068,7 +1049,6 @@ Refer to the chapter <a href="#usecallback">Use callback methods
 		
 <a name="ALitePostUpdate"></a>
 ###@ALitePostUpdate
-
 
 Applicable to : **Method** only
 
@@ -1082,7 +1062,6 @@ Refer to the chapter <a href="#usecallback">Use callback methods
 <a name="ALitePrePersist"></a>
 ###@ALitePrePersist
 
-
 Applicable to : **Method** only
 
 Is used to specify a callback method called before a new entity is persisted into the database. 
@@ -1094,7 +1073,6 @@ Refer to the chapter <a href="#usecallback">Use callback methods
 		
 <a name="ALitePreRemove"></a>
 ###@ALitePreRemove
-
 
 Applicable to : **Method** only
 
@@ -1108,7 +1086,6 @@ Refer to the chapter <a href="#usecallback">Use callback methods
 <a name="ALitePreUpdate"></a>
 ###@ALitePreUpdate
 
-
 Applicable to : **Method** only
 
 Is used to specify a callback method called before updating an entity in the database. 
@@ -1120,7 +1097,6 @@ Refer to the chapter <a href="#usecallback">Use callback methods
 		
 <a name="ALiteStringLength"></a>
 ###@ALiteStringLength
-
 
 Applicable to : **Method** only
 
@@ -1139,7 +1115,6 @@ ___
 ```
 length:  The desired length of the database column mapped with the String.
 ```
-
 
 ```
 Mapping a specific string to VARCHAR(40) and VARCHAR(255)
