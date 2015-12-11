@@ -4,7 +4,7 @@ ALiteOrm is a minimalist, lightweight and easy to use ORM framework specially bu
 
 ALiteOrm has been built in contrast to existing frameworks or Android ORM's to avoid:
 
-* Any kind of inheritance between the ORM classes and the Android application classes. This to allow you to have a complete control of you OO model without any external constraints
+* Any kind of inheritance between the ORM classes and the Android application classes. This to allow your to have a complete control of you OO model without any external constraints
 * Modifications into the Android manifest
 * Extra configuration files to define the database schema and identify the mapped classes
 
@@ -15,12 +15,12 @@ The request definition and the execution, the session and transaction management
 ###Features
 
 * Standardized Android Library 
-* Clean and simple integration to your projects with minimal configuration.
-* Automatic database schema creation, with support of versions allowing to deploy schema upgrades with subsequent version releases.
-* No need to deal with Android's built-in database API.
-* Written in pure java, base on annotation processing and reflection.
-* Allows the persistence of POJO.
-* Support for transactions.
+* Clean and simple integration to your projects with minimal configuration
+* Automatic database schema creation, with support of versions allowing to deploy schema upgrades with subsequent version releases
+* No need to deal with Android's built-in database API
+* Written in pure java, based on annotation processing and reflection
+* Allows the persistence of POJO
+* Support of transactions
 
 
 ###License
@@ -51,7 +51,7 @@ ALiteOrm supports Android 4.0 (API level 14) and above.
 
 #Getting started
 
-###Annotated your classes
+###Annotate your classes
 
 ```
 @ALiteEntity
@@ -190,7 +190,7 @@ try{
 
 #You want more
 
-Check the detailed This files must be valid against this [documentation](https://github.com/nirekin/ALiteOrm/blob/master/DOCUMENTATION.md).
+Check the detailed [documentation](https://github.com/nirekin/ALiteOrm/blob/master/DOCUMENTATION.md).
 
 
 
