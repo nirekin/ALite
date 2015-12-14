@@ -1181,7 +1181,11 @@ Saving several instances of an entity
 	u3.setAge(90);
 	...
 	
-	s.save(u1, u2, u3);
+	try{
+		s.save(u1, u2, u3);
+	}catch(BulkProcessException bpe){
+		throw new RuntimeException(bpe);
+	}
 	s.close();
 ```
 
@@ -1193,7 +1197,11 @@ Saving a list of instances of an entity
 	users.add(...);
 	...
 		
-	s.save(users);
+	try{
+		s.save(users);
+	}catch(BulkProcessException bpe){
+		throw new RuntimeException(bpe);
+	}	
 	s.close();
 ```
 
@@ -1242,7 +1250,7 @@ Deleting a single instance of an entity
 ```
 
 ```
-Saving several instances of an entity
+Deleting several instances of an entity
 
 	Session s = new Session();
 	User u1 = new User();
@@ -1255,19 +1263,28 @@ Saving several instances of an entity
 	u3.setId(90);
 	...
 	
-	delete(u1, u2, u3);
+	try{
+		s.delete(u1, u2, u3);
+	}catch(BulkProcessException bpe){
+		throw new RuntimeException(bpe);
+	}
 	s.close();
 ```
 
 ```
-Saving a list of instances of an entity
+Deleting a list of instances of an entity
 
 	Session s = new Session();
 	List<User> users = new List<>();
 	users.add(...);
 	...
 		
-	s.delete(users);
+	try{
+		s.delete(users);
+	}catch(BulkProcessException bpe){
+		throw new RuntimeException(bpe);
+	}	
+	
 	s.close();
 ```
 
