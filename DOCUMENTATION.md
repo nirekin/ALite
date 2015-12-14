@@ -1218,7 +1218,7 @@ Each class annotated with ***<a href="#ALiteEntity">@ALiteEntity</a>*** can be d
 
 #####Note:
 
-*If you try to delete an entity with un uninitialized id then the where condition will be build using the default value(s) of the database column(s) corresponding this the entity primary key.
+* If you try to delete an entity with un uninitialized id then the where condition will be build using the default value(s) of the database column(s) corresponding this the entity primary key.
 
 ```
 Considering the following entity
