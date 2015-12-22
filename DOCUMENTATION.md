@@ -54,7 +54,7 @@ Using the following instruction the *str* attribute of the _Embedded_ class will
 ```
 
 ```
-Example 
+Example
 
 	@ALiteEntity
 	@ALiteAttributeOverrides(value={
@@ -63,15 +63,15 @@ Example
 	public class Table2{
 		private Embbedded emb;
 		private String str;
-	
+
 		...
-		
+
 		@ALiteEmbedded
 		public Embbedded getEmb() {
 			return emb;
 		}
 	}
-	
+
 	@ALiteEmbeddable
 	public class Embbedded{
 		private String str;
@@ -96,7 +96,7 @@ value:  The list of columns to override.
 This annotations allows to specify the list of attributes to override for the annotated entity.
 
 ```
-Example 
+Example
 
 	@ALiteEntity
 	@ALiteAttributeOverrides(value={
@@ -107,19 +107,19 @@ Example
 	public class Table2{
 		private Embbedded emb;
 		private String str1, str2, str3;
-	
+
 		...
-		
+
 		@ALiteEmbedded
 		public Embbedded getEmb() {
 			return emb;
 		}
 	}
-	
+
 	@ALiteEmbeddable
 	public class Embbedded{
 		private String str1, str2, str3;
-		
+
 		...
 	}
 ```
@@ -147,7 +147,7 @@ Specifies more details about the database column where is mapped the attribute c
 If no ***@ALiteColumn*** annotation is specified, or if it's specified without defining all its parameters, the default values will be applied.
 
 ```
-Example 
+Example
 
 	@ALiteEntity
 	public class Table2{
@@ -159,7 +159,7 @@ Example
 		public String getStr1() {
 			return str1;
 		}
-		
+
 		// the database column str2 will have a "unique" constraint
 		@ALiteColumn(unique=true)
 		public String getStr2() {
@@ -170,21 +170,21 @@ Example
 		@ALiteColumn(nullable=true)
 		public String getStr3() {
 			return str3;
-		}		
-		
+		}
+
 		// the database column str4 will not be filled saving the entity, if defined the 
 		// "defaultValue" will be inserted.
 		@ALiteColumn(insertable =false)
 		public String getStr4() {
 			return str4;
 		}
-		
+
 		// the database column str5 won't be modified by update
 		@ALiteColumn(updatable =false)
 		public String getStr5() {
 			return str5;
 		}
-		
+
 		// the database column will be build using the "columnDefinition" content, 
 		// all other attributes, like "name", will be ignored
  		@ALiteColumn(name="blablabla" columnDefinition="my_boolean INTEGER DEFAULT '1' NULL")
@@ -252,7 +252,7 @@ Add in the third version of your schema a new supper class to Table2 entity prev
 		}
 		...
 	}
-		
+
 	@ALiteMappedSuperclass
 	@ALiteDBVersion(versionNumber=3)
 	public class SuperVersion3{
@@ -266,12 +266,12 @@ Add in the fourth version of your schema an embedded class to Table2 entity prev
 	@ALiteEntity
 	@ALiteDBVersion(versionNumber=2)
 	public class Table2 extends SuperVersion3{
-	
+
 		private EmbeddableVersion4 emb;
 
 		public Table2(){
 		}
-			
+
 		@ALiteEmbedded
 		public EmbeddableVersion4 getEmb() {
 			return emb;
@@ -282,7 +282,7 @@ Add in the fourth version of your schema an embedded class to Table2 entity prev
 		}
 		...
 	}
-		
+
 	@ALiteEmbeddable
 	@ALiteDBVersion(versionNumber=4)
 	public class EmbeddableVersion4{
@@ -311,7 +311,53 @@ This annotation gives you a simpler way to map a collection of basic types, wrap
 
 Refer to this <a href="#9000">chapter</a> to learn how use element collections.
 
-TODO example
+```
+	Map a collection of Strings.
+
+    @ALiteEntity
+	public class Table2{
+
+		private List<String> names;
+
+        @ALiteElementCollection
+		@ALiteStringLength(length=122)
+		public List<String> getNames() {
+			return names;
+		}
+
+		public void setNames(List<String> names) {
+			this.names = names;
+		}
+	}
+
+```
+
+```
+	Map a collection of @ALiteEmbeddable object.
+
+    @ALiteEntity
+	public class Table2{
+
+		private List<ColEmbeddable> embs;
+
+        @ALiteElementCollection
+		public List<ColEmbeddable> getEmbs() {
+			return embs;
+		}
+
+		public void setEmbs(List<ColEmbeddable> embs) {
+			this.embs = embs;
+		}
+	}
+
+	...
+
+    @ALiteEmbeddable
+	public class ColEmbeddable {
+    	private String field1, field2;
+        private int field3, field4;
+    }
+```
 
 
 
@@ -347,7 +393,7 @@ Refer to this <a href="#8000">chapter</a> to learn how to map embeddable classes
 ```
 	@ALiteEmbeddable
 	public class Embeddable {
-		
+
 		public Embeddable(){
 		}
 		...
@@ -360,9 +406,9 @@ Refer to this <a href="#8000">chapter</a> to learn how to map embeddable classes
 
 Applicable to : **Method** only
 
-Apply to a getter this annotation is used to specify a persistent field or property of an entity whose value is an instance of an embeddable class. 
+Apply to a getter this annotation is used to specify a persistent field or property of an entity whose value is an instance of an embeddable class.
 
-The embeddable class must be annotated at the class level with the ***<a href="#ALiteEmbeddable">@ALiteEmbeddable </a>*** annotation. 
+The embeddable class must be annotated at the class level with the ***<a href="#ALiteEmbeddable">@ALiteEmbeddable </a>*** annotation.
 
 #####Exception:
 
@@ -420,39 +466,39 @@ An embeddable id will not have its own database table. The mapped columns of the
 
 
 Refer to this <a href="#6500">chapter</a> to learn how define an entity ids.
-	
+
 ```
 Composite identifier
-	
+
 	@ALiteEntity
 	public class Table2{
 		private MyId id;
-		
+
 		public Table2(){
 		}
-		
+
 		@ALiteEmbeddedId
 		public MyId getId() {
 			return id;
 		}
-		
+
 		public void setId(MyId id) {
 			this.id = id;
 		}
 		...
 	}
-	
+
     @ALiteEmbeddable
     public class MyId {
         private int val1, val2;
-		
+
 		 public MyId(){
 		 }
-		
+
 		 public int getVal1() {
 		     return val1;
 		 }
-        
+
         public int getVal1() {
             return val2;
         }
@@ -536,7 +582,7 @@ Refer to this <a href="#1600">chapters</a> to learn how to use callback listener
 
 * This annotation can be applied only to entity classes.
 
-		
+
 ```
 Adding a single callback listener class to an entity
 
@@ -592,7 +638,7 @@ Adding a single callback listener class to an entity
 ```
 Adding multiple callback listener classes to an entity
 
-	@ALiteEntity			
+	@ALiteEntity
 	@ALiteEntityListeners({Listener1.class,Listener2.class})
 	public class Table2 {
 
@@ -688,19 +734,19 @@ Refer to this <a href="#6500">chapter</a> to learn how define an entity id
 
 ```
 Auto increment on int
-	
+
 	@ALiteEntity
 	public class Table2{
 		private int id;
-		
+
 		public Table2(){
 		}
-		
+
 		@ALiteId()
 		public int getId() {
 			return id;
 		}
-		
+
 		public void setId(int id) {
 			this.id = id;
 		}
@@ -710,19 +756,19 @@ Auto increment on int
 
 ```
 Non auto increment on string
-	
+
 	@ALiteEntity
 	public class Table2 {
 		private String id;
-		
+
 		public Table2(){
 		}
-		
+
 		@ALiteId(auto=false)
 		public String getId() {
 			return id;
 		}
-		
+
 		public void setId(String id) {
 			this.id = id;
 		}
@@ -809,7 +855,7 @@ Is used to specify a callback method called after an entity has been retrieved f
 This annotation may be applied to methods of an entity class or a callback listener class.
 
 Refer to this <a href="#16000">chapter</a> to learn how to use methods of callback listeners.
-		
+
 <a name="ALitePostPersist"></a>
 ##@ALitePostPersist
 
@@ -831,7 +877,7 @@ Is used to specify a callback method called after an entity has been deleted int
 This annotation may be applied to methods of an entity class or a callback listener class.
 
 Refer to this <a href="#16000">chapter</a> to learn how to use methods of callback listeners.
-		
+
 <a name="ALitePostUpdate"></a>
 ##@ALitePostUpdate
 
@@ -842,7 +888,7 @@ Is used to specify a callback method called after an entity has been updated int
 This annotation may be applied to methods of an entity class or a callback listener class.
 
 Refer to this <a href="#16000">chapter</a>  to learn how to use methods of callback listeners.
-		
+
 <a name="ALitePrePersist"></a>
 ##@ALitePrePersist
 
@@ -853,7 +899,7 @@ Is used to specify a callback method called before a new entity is persisted int
 This annotation may be applied to methods of an entity class or a callback listener class.
 
 Refer to this <a href="#16000">chapter</a> to learn how to use methods of callback listeners.
-		
+
 <a name="ALitePreRemove"></a>
 ##@ALitePreRemove
 
@@ -864,7 +910,7 @@ Is used to specify a callback method called before deleting an entity into the d
 This annotation may be applied to methods of an entity class or a callback listener class.
 
 Refer to this <a href="#16000">chapter</a>  to learn how to use methods of callback listeners.
-		
+
 <a name="ALitePreUpdate"></a>
 ##@ALitePreUpdate
 
@@ -874,8 +920,8 @@ Is used to specify a callback method called before updating an entity in the dat
 
 This annotation may be applied to methods of an entity class or a callback listener class.
 
-RRefer to this <a href="#16000">chapter</a> to learn how to use methods of callback listeners.
-		
+Refer to this <a href="#16000">chapter</a> to learn how to use methods of callback listeners.
+
 <a name="ALiteStringLength"></a>
 ##@ALiteStringLength
 
@@ -913,12 +959,12 @@ Mapping a specific string to VARCHAR(40) and VARCHAR(255)
 		public String getfString40() {
 			return fString40;
 		}
-	
-		// Will create a database : VARCHAR(255)	
+
+		// Will create a database : VARCHAR(255)
 		public String getfString() {
 			return fString;
 		}
-			
+
 		// Will have no effect
 		@ALiteStringLength(length=40)
 		public int getfInt() {
@@ -1081,7 +1127,7 @@ The following code will add a global callback listener class
 ```
 
 Refer to this <a href="#16000">chapter</a> to learn how to use global callback listener classes.
-		
+
 
 
 <a name ="4000"></a>
@@ -1162,7 +1208,7 @@ Saving a single instance of an entity
 	User u = new User();
 	u.setAge(88);
 	...
-	
+
 	s.save(u);
 	s.close();
 ```
@@ -1180,7 +1226,7 @@ Saving several instances of an entity
 	User u3 = new User();
 	u3.setAge(90);
 	...
-	
+
 	try{
 		s.save(u1, u2, u3);
 	}catch(BulkProcessException bpe){
@@ -1196,12 +1242,12 @@ Saving a list of instances of an entity
 	List<User> users = new List<>();
 	users.add(...);
 	...
-		
+
 	try{
 		s.save(users);
 	}catch(BulkProcessException bpe){
 		throw new RuntimeException(bpe);
-	}	
+	}
 	s.close();
 ```
 
@@ -1244,7 +1290,7 @@ Deleting a single instance of an entity
 	User u = new User();
 	u.setId(88);
 	...
-	
+
 	s.delete(u);
 	s.close();
 ```
@@ -1262,7 +1308,7 @@ Deleting several instances of an entity
 	User u3 = new User();
 	u3.setId(90);
 	...
-	
+
 	try{
 		s.delete(u1, u2, u3);
 	}catch(BulkProcessException bpe){
@@ -1278,13 +1324,13 @@ Deleting a list of instances of an entity
 	List<User> users = new List<>();
 	users.add(...);
 	...
-		
+
 	try{
 		s.delete(users);
 	}catch(BulkProcessException bpe){
 		throw new RuntimeException(bpe);
-	}	
-	
+	}
+
 	s.close();
 ```
 
@@ -1402,7 +1448,7 @@ Using the same callback method for more than one event
 			private void onPostLoad() {
 				...
 			}
-			
+
 			private void onPreUpdate() {
 				...
 			}
@@ -1411,7 +1457,7 @@ Using the same callback method for more than one event
 			private void onPostUpdate() {
 				...
 			}
-			
+
 			private void onPreRemove() {
 				...
 			}
@@ -1459,7 +1505,7 @@ Adding a single entity listener to an entity
 			public Table2(){
 			}
 		}
-		
+
 
 		// The callback listener class implementation
 		public class Listener1 {
@@ -1473,27 +1519,27 @@ Adding a single entity listener to an entity
 			void onPostPersist(Object o) {
 				...
 			}
-			
+
 			@ALitePostLoad
 			void onPostLoad(Object o) {
 				...
 			}
-			
+
 			@ALitePreUpdate
 			void onPreUpdate(Object o) {
 				...
 			}
-			
+
 			@ALitePostUpdate
 			void onPostUpdate(Object o) {
 				...
 			}
-			
+
 			@ALitePreRemove
 			void onPreRemove(Object o) {
 				...
 			}
-			
+
 			@ALitePostRemove
 			void onPostRemove(Object o) {
 				...
@@ -1511,7 +1557,7 @@ Adding multiple entity listeners to an entity
 			public Table2(){
 			}
 		}
-		
+
 
 		// First callback listener class implementation
 		public class Listener1 {
@@ -1520,14 +1566,14 @@ Adding multiple entity listeners to an entity
 			void onPrePersist(Object o) {
 				...
 			}
-			
+
 			@ALitePostPersist
 			void onPostPersist(Object o) {
 				...
 			}
 			...
 		}
-		
+
 		// Second callback listener class implementation
 		public class Listener2 {
 
@@ -1535,7 +1581,7 @@ Adding multiple entity listeners to an entity
 			void onPrePersist(Object o) {
 				...
 			}
-			
+
 			@ALitePostPersist
 			void onPostPersist(Object o) {
 				...
@@ -1549,7 +1595,7 @@ Adding a single entity listener to the session
 
 		Session s = new Session();
 		s.addSessionEntityListener(Listener1.class);
-				
+
 
 		// The callback listener class implementation
 		public class Listener1 {
@@ -1558,7 +1604,7 @@ Adding a single entity listener to the session
 			void onPrePersist(Object o) {
 				...
 			}
-			
+
 			@ALitePostPersist
 			void onPostPersist(Object o) {
 				...
@@ -1573,7 +1619,7 @@ Adding multiple entity listeners to the session
 		Session s = new Session();
 		s.addSessionEntityListener(Listener1.class)
 		.addSessionEntityListener(Listener2.class);
-				
+
 
 		// The callback listener class implementation
 		public class Listener1 {
@@ -1582,7 +1628,7 @@ Adding multiple entity listeners to the session
 			void onPrePersist(Object o) {
 				...
 			}
-			
+
 			@ALitePostPersist
 			void onPostPersist(Object o) {
 				...
@@ -1590,7 +1636,7 @@ Adding multiple entity listeners to the session
 			...
 
 		}
-		
+
 		// The callback listener class implementation
 		public class Listener2 {
 
@@ -1598,7 +1644,7 @@ Adding multiple entity listeners to the session
 			void onPrePersist(Object o) {
 				...
 			}
-			
+
 			@ALitePostPersist
 			void onPostPersist(Object o) {
 				...
@@ -1612,7 +1658,7 @@ Removing an entity listener from the session
 
 		Session s = new Session();
 		s.removeSessionEntityListener(Listener1.class);
-				
+
 
 		// The callback listener class implementation
 		public class Listener1 {
@@ -1621,7 +1667,7 @@ Removing an entity listener from the session
 			void onPrePersist(Object o) {
 				...
 			}
-			
+
 			@ALitePostPersist
 			void onPostPersist(Object o) {
 				...
@@ -1641,7 +1687,7 @@ Adding a global entity listener to the whole framwork
 			void onPrePersist(Object o) {
 				...
 			}
-			
+
 			@ALitePostPersist
 			void onPostPersist(Object o) {
 				...
@@ -1656,7 +1702,7 @@ Adding multiple global entity listeners to the whole framework
 		ALiteOrmBuilder.getInstance()
 		.addGlobalEntityListener(Listener1.class)
 		.addGlobalEntityListener(Listener2.class);
-				
+
 
 		// The callback listener class implementation
 		public class Listener1 {
@@ -1665,14 +1711,14 @@ Adding multiple global entity listeners to the whole framework
 			void onPrePersist(Object o) {
 				...
 			}
-			
+
 			@ALitePostPersist
 			void onPostPersist(Object o) {
 				...
 			}
 			...
 		}
-		
+
 		// The callback listener class implementation
 		public class Listener2 {
 
@@ -1680,7 +1726,7 @@ Adding multiple global entity listeners to the whole framework
 			void onPrePersist(Object o) {
 				...
 			}
-			
+
 			@ALitePostPersist
 			void onPostPersist(Object o) {
 				...
@@ -1694,7 +1740,7 @@ Removing a global entity listener
 
 		ALiteOrmBuilder.getInstance()
 		.removeGlobalEntityListener(Listener1.class);
-				
+
 
 		// The callback listener class implementation
 		public class Listener1 {
@@ -1703,7 +1749,7 @@ Removing a global entity listener
 			void onPrePersist(Object o) {
 				...
 			}
-			
+
 			@ALitePostPersist
 			void onPostPersist(Object o) {
 				...
@@ -1752,15 +1798,5 @@ Ignore session callback methods for a specified entity
 			...
 		}
 ```
-
-
-
-
-
-
-
-
-
-
 
 
